@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ztr/workspace/my_repository/EKF_KF_UKF/test/main.cpp
+iostream
+-
+random
+-
+eigen3/Eigen/Core
+-
+
