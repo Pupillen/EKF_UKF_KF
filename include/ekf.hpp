@@ -1,7 +1,7 @@
 /*** 
  * @Author: ztr
  * @Date: 2022-02-25 23:35:11
- * @LastEditTime: 2022-02-26 14:18:34
+ * @LastEditTime: 2022-02-26 15:26:52
  * @LastEditors: ztr
  * @Description: 
  * @FilePath: /EKF_KF_UKF/include/ekf.hpp
@@ -9,6 +9,7 @@
 #ifndef EKF_H__
 #define EKF_H__
 #include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/Geometry>
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -91,7 +92,7 @@ namespace my_filter
      * @return {*} Current estimated output z_m_
      */
     const VectorXd& GetCurrentEstimatedOutput() const;
-
+   /*  void logwirte() const; */
     private:
 void CalcF(const VectorXd &x, const VectorXd &u);
 void CalcH(const VectorXd &x);
@@ -110,7 +111,7 @@ void CalcH(const VectorXd &x);
     VectorXd x_p_;//State vector after a priori update
     VectorXd z_m_;//Estimated output  即h(x_m_);
     double epsilon_; // Very small number for Jacobian
-    fstream log;//for data analysis
+    ofstream log;//for data analysis
 
     //特殊数据!!!!!!!!!!!!!!!!!!!!!!!!!!!! 如果状态不可观,使用EKalmanf(const VectorXd &u)才有用
     VectorXd x_;//State vector 在没有观测数据z时依照过程方程,高斯噪声模拟的状态变量

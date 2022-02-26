@@ -6,7 +6,11 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall")
 find_package(Eigen3 REQUIRED)
 include_directories(
   ${EIGEN3_INCLUDE_DIR} 
-include
+  include
+../include
   )
-add_executable(main main.cpp)
+add_library(filter ../src/ekf.cpp ../include/ekf.hpp)
+add_executable(main src/main.cpp)
+add_executable(filtertest src/main4.cpp)
+target_link_libraries(filtertest LINK_PUBLIC filter)
 #set(EXECUTABLE_OUTPUT_PATH ./debug)

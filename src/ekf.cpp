@@ -10,6 +10,7 @@
 #include "ekf.hpp"
 #include <iostream>
 #include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/Geometry>
 #include <assert.h>
 #include <iomanip>
 namespace my_filter
@@ -17,13 +18,13 @@ namespace my_filter
     using namespace Eigen;
     using namespace std;
     EKF::EKF()
-    {
-        log.open("../log_file.txt");
+    {   cout<<"打开写入日志文件"<<endl;
+        log.open("log_file.txt");
         iteration = 0;
     }
 
     EKF::~EKF()
-    {
+    {   cout<<"关闭日志文件,写入完毕"<<endl;
         log.close();
         iteration = 0;
     }
@@ -69,8 +70,8 @@ namespace my_filter
 
     void EKF::CalcF(const VectorXd &x, const VectorXd &u)
     {
-        VectorXd f0(nStates_, nStates_);
-        VectorXd fn(nStates_, nStates_);
+        MatrixXd f0(nStates_, nStates_);
+        MatrixXd fn(nStates_, nStates_);
         f0 = f(x, u);
         /* 求偏f偏x,即f的第i个分量对x的第j个分量求导，即xj微小偏移后求f的第i个分量的差分*/
         for (int j = 0; j < nStates_; j++)
@@ -100,8 +101,8 @@ namespace my_filter
     }
     void EKF::CalcH(const VectorXd &x)
     {
-        VectorXd h0(nOutputs_, nOutputs_);
-        VectorXd hn(nOutputs_, nOutputs_);
+        MatrixXd h0(nOutputs_, nOutputs_);
+        MatrixXd hn(nOutputs_, nOutputs_);
         h0 = h(x);
         /* 求偏h偏x,即h的第i个分量对x的第j个分量求导，即xj微小偏移后求h的第i个分量的差分*/
         for (int j = 0; j < nStates_; j++)
@@ -165,6 +166,36 @@ namespace my_filter
         K = P_p_ * H_.transpose() * (H_ * P_p_ * H_.transpose() + R_).inverse();
         x_m_ = x_p_ + K * (z_ - h(x_p_)); //没有观测变量z,所以只能使用前面方程模拟的z_
         P_m_ = P_p_ - K * H_ * P_p_;
+        z_m_ = h(x_m_);
+
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!log!!!!!!!!!!!!!!!!!!!!!!!
+        log << iteration;
+        //模拟计算的观测数据
+        for (int i = 0; i < nOutputs_; i++)
+        {
+
+            log << "\t" << z_(i);
+        }
+        // EKF后观测数据
+        for (int i = 0; i < nOutputs_; i++)
+        {
+
+            log << "\t" << z_m_(i);
+        }
+        //模拟计算的状态变量数据
+        for (int i = 0; i < nStates_; i++)
+        {
+
+            log << "\t" << x_(i);
+        }
+        //状态变量数据
+        for (int i = 0; i < nStates_; i++)
+        {
+
+            log << "\t" << x_m_(i);
+            if (i == (nStates_ - 1))
+                log << "\n";
+        }
     }
     void EKF::EKalmanf(const VectorXd &z, const VectorXd &u)
     {
@@ -178,6 +209,9 @@ namespace my_filter
         K = P_p_ * H_.transpose() * (H_ * P_p_ * H_.transpose() + R_).inverse();
         x_m_ = x_p_ + K * (z - h(x_p_));
         P_m_ = P_p_ - K * H_ * P_p_;
+        z_m_ = h(x_m_);
+
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!log!!!!!!!!!!!!!!!!!!!!!!!
         log << iteration;
         //观测数据
         for (int i = 0; i < nOutputs_; i++)
@@ -195,7 +229,7 @@ namespace my_filter
         for (int i = 0; i < nStates_; i++)
         {
 
-            log << "\t" << z_m_(i);
+            log << "\t" << x_m_(i);
             if (i == (nStates_ - 1))
                 log << "\n";
         }
@@ -217,4 +251,5 @@ namespace my_filter
     {
         return z_m_;
     }
+
 }

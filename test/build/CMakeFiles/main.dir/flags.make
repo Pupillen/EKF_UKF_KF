@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=c++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/eigen3 
+CXX_INCLUDES = -I/usr/include/eigen3 -I/home/ztr/workspace/my_repository/EKF_KF_UKF/test/include -I/home/ztr/workspace/my_repository/EKF_KF_UKF/test/../include 
 
