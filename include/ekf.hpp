@@ -1,7 +1,7 @@
 /*** 
  * @Author: ztr
  * @Date: 2022-02-25 23:35:11
- * @LastEditTime: 2022-02-26 15:26:52
+ * @LastEditTime: 2022-02-26 20:13:03
  * @LastEditors: ztr
  * @Description: 
  * @FilePath: /EKF_KF_UKF/include/ekf.hpp
@@ -23,7 +23,7 @@ namespace my_filter
   class EKF
 {
     public:
-        EKF();
+        EKF(string logname="log.txt");
         ~EKF();
     /*** 
      * Tell me how many states and outputs you have!

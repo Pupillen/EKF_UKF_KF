@@ -17,9 +17,9 @@ namespace my_filter
 {
     using namespace Eigen;
     using namespace std;
-    EKF::EKF()
+    EKF::EKF(string logname)
     {   cout<<"打开写入日志文件"<<endl;
-        log.open("../../data_analysis/log.txt");
+        log.open("../../data_analysis/"+logname);
         iteration = 0;
     }
 
