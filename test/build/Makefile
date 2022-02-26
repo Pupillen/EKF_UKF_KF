@@ -124,6 +124,19 @@ filtertest/fast:
 .PHONY : filtertest/fast
 
 #=============================================================================
+# Target rules for targets named rmfiltertest
+
+# Build rule for target.
+rmfiltertest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rmfiltertest
+.PHONY : rmfiltertest
+
+# fast build rule for target.
+rmfiltertest/fast:
+	$(MAKE) -f CMakeFiles/rmfiltertest.dir/build.make CMakeFiles/rmfiltertest.dir/build
+.PHONY : rmfiltertest/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -176,6 +189,60 @@ home/ztr/workspace/my_repository/EKF_KF_UKF/src/ekf.cpp.s:
 	$(MAKE) -f CMakeFiles/filter.dir/build.make CMakeFiles/filter.dir/home/ztr/workspace/my_repository/EKF_KF_UKF/src/ekf.cpp.s
 .PHONY : home/ztr/workspace/my_repository/EKF_KF_UKF/src/ekf.cpp.s
 
+src/ekf_example1.o: src/ekf_example1.cpp.o
+
+.PHONY : src/ekf_example1.o
+
+# target to build an object file
+src/ekf_example1.cpp.o:
+	$(MAKE) -f CMakeFiles/filtertest.dir/build.make CMakeFiles/filtertest.dir/src/ekf_example1.cpp.o
+.PHONY : src/ekf_example1.cpp.o
+
+src/ekf_example1.i: src/ekf_example1.cpp.i
+
+.PHONY : src/ekf_example1.i
+
+# target to preprocess a source file
+src/ekf_example1.cpp.i:
+	$(MAKE) -f CMakeFiles/filtertest.dir/build.make CMakeFiles/filtertest.dir/src/ekf_example1.cpp.i
+.PHONY : src/ekf_example1.cpp.i
+
+src/ekf_example1.s: src/ekf_example1.cpp.s
+
+.PHONY : src/ekf_example1.s
+
+# target to generate assembly for a file
+src/ekf_example1.cpp.s:
+	$(MAKE) -f CMakeFiles/filtertest.dir/build.make CMakeFiles/filtertest.dir/src/ekf_example1.cpp.s
+.PHONY : src/ekf_example1.cpp.s
+
+src/ekf_example2_RM.o: src/ekf_example2_RM.cpp.o
+
+.PHONY : src/ekf_example2_RM.o
+
+# target to build an object file
+src/ekf_example2_RM.cpp.o:
+	$(MAKE) -f CMakeFiles/rmfiltertest.dir/build.make CMakeFiles/rmfiltertest.dir/src/ekf_example2_RM.cpp.o
+.PHONY : src/ekf_example2_RM.cpp.o
+
+src/ekf_example2_RM.i: src/ekf_example2_RM.cpp.i
+
+.PHONY : src/ekf_example2_RM.i
+
+# target to preprocess a source file
+src/ekf_example2_RM.cpp.i:
+	$(MAKE) -f CMakeFiles/rmfiltertest.dir/build.make CMakeFiles/rmfiltertest.dir/src/ekf_example2_RM.cpp.i
+.PHONY : src/ekf_example2_RM.cpp.i
+
+src/ekf_example2_RM.s: src/ekf_example2_RM.cpp.s
+
+.PHONY : src/ekf_example2_RM.s
+
+# target to generate assembly for a file
+src/ekf_example2_RM.cpp.s:
+	$(MAKE) -f CMakeFiles/rmfiltertest.dir/build.make CMakeFiles/rmfiltertest.dir/src/ekf_example2_RM.cpp.s
+.PHONY : src/ekf_example2_RM.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -203,33 +270,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/main4.o: src/main4.cpp.o
-
-.PHONY : src/main4.o
-
-# target to build an object file
-src/main4.cpp.o:
-	$(MAKE) -f CMakeFiles/filtertest.dir/build.make CMakeFiles/filtertest.dir/src/main4.cpp.o
-.PHONY : src/main4.cpp.o
-
-src/main4.i: src/main4.cpp.i
-
-.PHONY : src/main4.i
-
-# target to preprocess a source file
-src/main4.cpp.i:
-	$(MAKE) -f CMakeFiles/filtertest.dir/build.make CMakeFiles/filtertest.dir/src/main4.cpp.i
-.PHONY : src/main4.cpp.i
-
-src/main4.s: src/main4.cpp.s
-
-.PHONY : src/main4.s
-
-# target to generate assembly for a file
-src/main4.cpp.s:
-	$(MAKE) -f CMakeFiles/filtertest.dir/build.make CMakeFiles/filtertest.dir/src/main4.cpp.s
-.PHONY : src/main4.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -239,17 +279,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... filtertest"
+	@echo "... rmfiltertest"
 	@echo "... main"
 	@echo "... filter"
 	@echo "... home/ztr/workspace/my_repository/EKF_KF_UKF/src/ekf.o"
 	@echo "... home/ztr/workspace/my_repository/EKF_KF_UKF/src/ekf.i"
 	@echo "... home/ztr/workspace/my_repository/EKF_KF_UKF/src/ekf.s"
+	@echo "... src/ekf_example1.o"
+	@echo "... src/ekf_example1.i"
+	@echo "... src/ekf_example1.s"
+	@echo "... src/ekf_example2_RM.o"
+	@echo "... src/ekf_example2_RM.i"
+	@echo "... src/ekf_example2_RM.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/main4.o"
-	@echo "... src/main4.i"
-	@echo "... src/main4.s"
 .PHONY : help
 
 

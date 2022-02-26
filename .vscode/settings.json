@@ -4,6 +4,8 @@
         "cmath": "cpp",
         "*.tcc": "cpp",
         "complex": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "cassert": "cpp",
+        "iostream": "cpp"
     }
 }

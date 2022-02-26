@@ -12,5 +12,7 @@ include_directories(
 add_library(filter ../src/ekf.cpp ../include/ekf.hpp)
 add_executable(main src/main.cpp)
 add_executable(filtertest src/ekf_example1.cpp)
+add_executable(rmfiltertest src/ekf_example2_RM.cpp)
 target_link_libraries(filtertest LINK_PUBLIC filter)
+target_link_libraries(rmfiltertest LINK_PUBLIC filter)
 #set(EXECUTABLE_OUTPUT_PATH ./debug)
