@@ -1,7 +1,7 @@
 /*
  * @Author: ztr
  * @Date: 2022-02-25 23:39:39
- * @LastEditTime: 2022-02-26 14:35:51
+ * @LastEditTime: 2022-02-26 16:13:52
  * @LastEditors: ztr
  * @Description: 
  * @FilePath: /EKF_KF_UKF/.vscode/c_cpp_properties.json
@@ -22,7 +22,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/**",
-                "/usr/local/include"
+                "/usr/local/include",
+                "/opt/ros/noetic/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
