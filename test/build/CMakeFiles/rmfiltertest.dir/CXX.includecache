@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../include/ekf.hpp
+eigen3/Eigen/Core
+-
+eigen3/Eigen/Geometry
+-
+iostream
+-
+fstream
+-
+
+/home/ztr/workspace/my_repository/EKF_KF_UKF/test/src/ekf_example2_RM.cpp
+iostream
+-
+fstream
+-
+cassert
+-
+string
+-
+ekf.hpp
+/home/ztr/workspace/my_repository/EKF_KF_UKF/test/src/ekf.hpp
+

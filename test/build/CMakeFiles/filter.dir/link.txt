@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfilter.a  CMakeFiles/filter.dir/home/ztr/workspace/my_repository/EKF_KF_UKF/src/ekf.cpp.o
+/usr/bin/ranlib libfilter.a
